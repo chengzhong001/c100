@@ -54,6 +54,5 @@ void C100::Lexer::GetNextToken() {
     CurrentToken = std::make_shared<Token>();
     CurrentToken->Kind = kind;
     CurrentToken->Value = value;
-
-    CurrentToken->Content = SourceCode.substr(startPos, Cursor  -1 - startPos);
+    CurrentToken->Content = SourceCode.substr(startPos, Cursor - 1 - startPos);
 }
