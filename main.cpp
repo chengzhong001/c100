@@ -1,9 +1,11 @@
 #include "Lexer.h"
+#include "Parser.h"
+#include "PrintVisitor.h"
 #include <iostream>
 
 using namespace C100;
 
-const char *code = "  15 + 1 - 3*4/2";
+const char *code = "  5 + 1 - 3*4/2";
 void testLexer() {
     Lexer lexer(code);
 
@@ -14,6 +16,12 @@ void testLexer() {
 }
 
 int main() {
-    testLexer();
+    Lexer lex(code);
+    lex.GetNextToken();
+    Parser parser(lex);
+    PrintVisitor visitor;
+    auto root = parser.Parse();
+    root->Accept(&visitor);
+
     return 0;
 }

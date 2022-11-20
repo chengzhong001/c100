@@ -12,7 +12,7 @@ class Parser {
 
   public:
     Parser(Lexer &lex) : Lex(lex) {}
-    std::shared_ptr<AstNode> Parse();
+    std::shared_ptr<ProgramNode> Parse();
 
   private:
     std::shared_ptr<AstNode> ParseExpr();

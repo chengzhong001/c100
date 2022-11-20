@@ -3,4 +3,4 @@ project(c100)
 
 set(CMAKE_CXX_STANDARD  17)
 
-add_executable(c100 main.cpp Codegen.cpp Lexer.cpp Parser.cpp AstNode.cpp)
+add_executable(c100 main.cpp Codegen.cpp Lexer.cpp Parser.cpp AstNode.cpp PrintVisitor.cpp)

@@ -4,7 +4,11 @@
 #include <memory>
 
 using namespace C100;
-std::shared_ptr<AstNode> Parser::Parse() { return ParseExpr(); }
+std::shared_ptr<ProgramNode> Parser::Parse() { 
+    auto node = std::make_shared<ProgramNode>();
+    node->Lhs = ParseExpr();
+    return node;
+}
 
 std::shared_ptr<AstNode> Parser::ParseExpr() { return ParseAddExpr(); }
 
@@ -32,7 +36,7 @@ std::shared_ptr<AstNode> Parser::ParseMultiExpr(){
            Lex.CurrentToken->Kind == TokenKind::Div) {
         BinaryOperator anOperator = BinaryOperator::Mul;
         if (Lex.CurrentToken->Kind == TokenKind::Div) {
-            anOperator = BinaryOperator::Mul;
+            anOperator = BinaryOperator::Div;
         }
         Lex.GetNextToken();
         auto node = std::make_shared<BinaryNode>();

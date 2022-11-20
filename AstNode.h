@@ -10,13 +10,13 @@ class AstVisitor;
 class AstNode {
   public:
     virtual ~AstNode() {}
-    virtual void Accept(AstVisitor *visitor);
+    virtual void Accept(AstVisitor *visitor){};
 };
 
-class ProgramNode :public AstNode{
+class ProgramNode : public AstNode {
   public:
-    std::shared_ptr<AstNode> CurrentToken;
-    void Accept(AstVisitor * visitor) override ;
+    std::shared_ptr<AstNode> Lhs;
+    void Accept(AstVisitor *visitor) override;
 };
 
 enum class BinaryOperator {
@@ -42,9 +42,9 @@ class ConstantNode : public AstNode {
 
 class AstVisitor {
   public:
-    virtual void VisitorProgramNode(ProgramNode *node);
-    virtual void VisitorBinaryNode(BinaryNode *node);
-    virtual void VisitorConstantNode(ConstantNode *node);
+    virtual void VisitorProgramNode(ProgramNode *node){};
+    virtual void VisitorBinaryNode(BinaryNode *node){};
+    virtual void VisitorConstantNode(ConstantNode *node){};
 };
 
 } // namespace C100
