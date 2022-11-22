@@ -1,9 +1,10 @@
 #ifndef C100_PARSER_H
 #define C100_PARSER_H
 
+#include <memory>
+
 #include "AstNode.h"
 #include "Lexer.h"
-#include <memory>
 
 namespace C100 {
 class Parser {

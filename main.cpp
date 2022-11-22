@@ -1,7 +1,10 @@
+#include <cstdio>
+#include <iostream>
+
+#include "CodeGen.h"
 #include "Lexer.h"
 #include "Parser.h"
-#include "PrintVisitor.h"
-#include <iostream>
+// #include "PrintVisitor.h"
 
 using namespace C100;
 
@@ -15,13 +18,22 @@ void testLexer() {
     } while (lexer.CurrentToken->Kind != TokenKind::Eof);
 }
 
-int main() {
-    Lexer lex(code);
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        printf("please input: ./c100 code\n");
+        return 0;
+    }
+
+    const char *source = argv[1];
+    Lexer lex(source);
     lex.GetNextToken();
+
     Parser parser(lex);
-    PrintVisitor visitor;
+    CodeGen codeGen;
+    // PrintVisitor visitor;
+
     auto root = parser.Parse();
-    root->Accept(&visitor);
+    root->Accept(&codeGen);
 
     return 0;
 }
