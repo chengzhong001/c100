@@ -3,4 +3,5 @@ project(c100)
 
 set(CMAKE_CXX_STANDARD  17)
 
-add_executable(${PROJECT_NAME} src/main.cpp src/Codegen.cpp src/Lexer.cpp src/Parser.cpp src/AstNode.cpp src/PrintVisitor.cpp)
+file(GLOB_RECURSE src_files src/*.cpp)
+add_executable(${PROJECT_NAME} ${src_files})
