@@ -11,6 +11,8 @@ enum class TokenKind {
     Mul,
     Div,
     Num,
+    LParent,
+    RParent,
     Eof,
 };
 

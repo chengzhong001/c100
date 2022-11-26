@@ -40,7 +40,17 @@ void C100::Lexer::GetNextToken() {
     } else if (CurChar == '/') {
         kind = TokenKind::Div;
         GetNextChar();
-    } else if (isdigit(CurChar)) {
+    } 
+    else if (CurChar == '(') {
+        kind = TokenKind::LParent;
+        GetNextChar();
+    }
+    else if (CurChar == ')') {
+        kind = TokenKind::RParent;
+        GetNextChar();
+    }
+    
+    else if (isdigit(CurChar)) {
         value = 0;
         do {
             value = value * 10 + CurChar - '0';
