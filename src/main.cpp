@@ -19,7 +19,7 @@ void testLexer() {
 }
 
 int main(int argc, char *argv[]) {
-    testLexer();
+    // testLexer();
     if (argc != 2) {
         printf("please input: ./c100 code\n");
         return 0;
