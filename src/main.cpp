@@ -8,7 +8,7 @@
 
 using namespace C100;
 
-const char *code = "  5 + (1 - 3)*4/2";
+const char* code = "  5 + (1 - 3)*4/2";
 void testLexer() {
     Lexer lexer(code);
 
@@ -18,14 +18,14 @@ void testLexer() {
     } while (lexer.CurrentToken->Kind != TokenKind::Eof);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     // testLexer();
     if (argc != 2) {
         printf("please input: ./c100 code\n");
         return 0;
     }
 
-    const char *source = argv[1];
+    const char* source = argv[1];
     Lexer lex(source);
     lex.GetNextToken();
 

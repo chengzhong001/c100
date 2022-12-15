@@ -1,4 +1,5 @@
 #include "Lexer.h"
+
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -6,7 +7,6 @@
 #include <memory>
 
 void C100::Lexer::GetNextChar() {
-
     if (Cursor == SourceCode.size()) {
         CurChar = '\0';
         Cursor++;
@@ -16,9 +16,7 @@ void C100::Lexer::GetNextChar() {
 }
 
 void C100::Lexer::GetNextToken() {
-
     while (isspace(CurChar)) {
-
         GetNextChar();
     }
 
@@ -40,16 +38,14 @@ void C100::Lexer::GetNextToken() {
     } else if (CurChar == '/') {
         kind = TokenKind::Div;
         GetNextChar();
-    } 
-    else if (CurChar == '(') {
+    } else if (CurChar == '(') {
         kind = TokenKind::LParent;
         GetNextChar();
-    }
-    else if (CurChar == ')') {
+    } else if (CurChar == ')') {
         kind = TokenKind::RParent;
         GetNextChar();
     }
-    
+
     else if (isdigit(CurChar)) {
         value = 0;
         do {

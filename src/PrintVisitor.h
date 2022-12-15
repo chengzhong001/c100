@@ -5,13 +5,14 @@
 
 namespace C100 {
 class PrintVisitor : public AstVisitor {
-  public:
+public:
     void VisitorProgramNode(ProgramNode *node) override;
 
-  private:
+private:
     void VisitorBinaryNode(BinaryNode *node) override;
     void VisitorConstantNode(ConstantNode *node) override;
 };
-} // namespace C100
+
+}  // namespace C100
 
 #endif

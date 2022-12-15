@@ -17,27 +17,27 @@ enum class TokenKind {
 };
 
 class Token {
-  public:
+public:
     TokenKind Kind;
     int Value;
     std::string_view Content;
 };
 
 class Lexer {
-  private:
+private:
     std::string_view SourceCode;
     char CurChar{' '};
     int Cursor{0};
 
-  public:
+public:
     std::shared_ptr<Token> CurrentToken;
 
-  public:
-    Lexer(const char *code) : SourceCode(code) {}
+public:
+    Lexer(const char* code) : SourceCode(code) {}
     void GetNextToken();
     void GetNextChar();
 };
 
-} // namespace C100
+}  // namespace C100
 
 #endif

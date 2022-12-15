@@ -8,13 +8,13 @@ namespace C100 {
 class AstVisitor;
 
 class AstNode {
-  public:
+public:
     virtual ~AstNode() {}
     virtual void Accept(AstVisitor *visitor){};
 };
 
 class ProgramNode : public AstNode {
-  public:
+public:
     std::shared_ptr<AstNode> Lhs;
     void Accept(AstVisitor *visitor) override;
 };
@@ -27,7 +27,7 @@ enum class BinaryOperator {
 };
 
 class BinaryNode : public AstNode {
-  public:
+public:
     BinaryOperator BinOp;
     std::shared_ptr<AstNode> Lhs;
     std::shared_ptr<AstNode> Rhs;
@@ -35,18 +35,18 @@ class BinaryNode : public AstNode {
 };
 
 class ConstantNode : public AstNode {
-  public:
+public:
     int Value;
     void Accept(AstVisitor *visitor) override;
 };
 
 class AstVisitor {
-  public:
+public:
     virtual void VisitorProgramNode(ProgramNode *node){};
     virtual void VisitorBinaryNode(BinaryNode *node){};
     virtual void VisitorConstantNode(ConstantNode *node){};
 };
 
-} // namespace C100
+}  // namespace C100
 
 #endif
